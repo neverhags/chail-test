@@ -17,4 +17,6 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', function () { return redirect('catalog'); });
+Route::get('/catalog', 'Catalog\\CatalogController@index');
+Route::get('/admin', 'Catalog\\CatalogController@create');
