@@ -37195,6 +37195,7 @@ var render = function() {
             attrs: { action: "/search", method: "get" }
           },
           [
+            _vm._v("\n                Search: "),
             _c("input", {
               directives: [
                 {
@@ -37225,23 +37226,30 @@ var render = function() {
                   "div",
                   { staticClass: "col-md-4 col-xs-12 searchBoxContent" },
                   _vm._l(_vm.hotels, function(hotel) {
-                    return _c("div", { staticClass: "col-xs-12 searchBox" }, [
-                      _c("div", { staticClass: "col col-4 d-inline-block" }, [
-                        _c("img", {
-                          staticClass: "searchImg",
-                          attrs: { src: hotel.imageUrl, alt: hotel.name }
-                        })
-                      ]),
-                      _vm._v(" "),
-                      _c(
-                        "div",
-                        {
-                          staticClass:
-                            "col col-7 d-inline-block hotel-description font-weight-bold"
-                        },
-                        [_vm._v(_vm._s(hotel.name))]
-                      )
-                    ])
+                    return _c(
+                      "a",
+                      {
+                        staticClass: "col-xs-12 searchBox",
+                        attrs: { href: "/catalog/" + hotel.id }
+                      },
+                      [
+                        _c("div", { staticClass: "col col-4 d-inline-block" }, [
+                          _c("img", {
+                            staticClass: "searchImg",
+                            attrs: { src: hotel.imageUrl, alt: hotel.name }
+                          })
+                        ]),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          {
+                            staticClass:
+                              "col col-7 d-inline-block hotel-description font-weight-bold"
+                          },
+                          [_vm._v(_vm._s(hotel.name))]
+                        )
+                      ]
+                    )
                   }),
                   0
                 )

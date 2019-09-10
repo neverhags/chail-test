@@ -78,7 +78,10 @@ class CatalogController extends Controller
      */
     public function show($id)
     {
-        //
+        $hotel = Hotels::findOrFail($id);
+        return view('catalog.show', [
+            'hotel' => $hotel
+        ]);
     }
 
     /**

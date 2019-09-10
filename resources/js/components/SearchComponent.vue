@@ -3,12 +3,12 @@
         <div class="row">
             <div class="col col-12">
                 <form action="/search" method="get" class="form-group">
-                    <input type="text" name="search" v-model="search" @input="searchQuery" class="form-control col-4">
+                    Search: <input type="text" name="search" v-model="search" @input="searchQuery" class="form-control col-4">
                     <div v-if="hotels.length && search" class="col-md-4 col-xs-12 searchBoxContent">
-                        <div class="col-xs-12 searchBox" v-for="hotel in hotels" >
+                        <a :href="'/catalog/' + hotel.id" class="col-xs-12 searchBox" v-for="hotel in hotels" >
                             <div class="col col-4 d-inline-block"><img class="searchImg" :src="hotel.imageUrl" :alt="hotel.name"></div>
                             <div class="col col-7 d-inline-block hotel-description font-weight-bold">{{hotel.name}}</div>
-                        </div>
+                        </a>
                     </div>
                 </form>
             </div>
