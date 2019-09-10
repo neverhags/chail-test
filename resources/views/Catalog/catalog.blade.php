@@ -9,7 +9,7 @@
                 <Search>You need to activate js support to see this search element</Search>
                 <div class="hotels">
                     @foreach($hotels as $hotel)
-                        <div class="hotel-card">
+                        <div class="hotel-card" onclick="window.location.href='/catalog/{{$hotel->id}}'">
                             <div class="card-body">
                                 <div class="searchBox">
                                     <div class="col col-4"><img class="img-circle col-12" src="{{$hotel->imageUrl}}" alt="{{$hotel->name}}" ></div>
