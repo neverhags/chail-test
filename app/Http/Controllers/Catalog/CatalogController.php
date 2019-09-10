@@ -136,9 +136,21 @@ class CatalogController extends Controller
         $report->delete();
         return redirect('/admin');
     }
+    /**
+     * Search name and description in Hotels.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function search(Request $request) {
+        $search = $request->validate([
+            'search' => 'required|min:3|text'
+        ]);
 
-    public function search(String $search) {
-        $result = Hotels::where('column', 'LIKE', $search)->get();
+        $result = Hotels::where([
+            ['name', 'LIKE', '%'.$search.'%'],
+            ['description', 'LIKE', '%'.$search.'%'],
+        ])->get();
         return $result;
     }
 }
