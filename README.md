@@ -10,7 +10,6 @@
         $ php artisan serve
  
 ### Notas:
-* Se ha realizado la prueba usando bachend PHP con Laravel como Framework principal como fué acordado previamente.  
 
 * Se ha minificado el código para producción en la carpeta public/js public/css
 
@@ -22,10 +21,11 @@
 
 + Se ha implementado Axios como interfaz REST solo para busquedas (vue)
 
++ Curiosidad: Los hoteles y la información contenida en el sql son reales
+
 #### Si existe la pregunta: 
 + ¿Porque no usar vue en toda la página?:
     + El SEO es importante en cualquier producto final, al punto de ser crítico en la mayoría de los casos, los frameworks reactivos Angular/React/VueJS que no implementan server-side rendering dificultan la acción de los spiders-bots causando un gran impacto en el tráfico y por ende en el capital requerido para obtener una venta.
     
 + ¿No has usado .Net?
     + No, no es un lenguaje que domine a tal punto como para crear un servidor desde cero con este, sin embargo, de haber querido, habría podido usar código de otros proyectos que lo implementan y modificarlo a la necesidad, sin embargo he evitado totalmente usar este tipo de prácticas y he optado por usar PHP-Laravel como backend como lo acordado en la entrevista.
-
