@@ -17,6 +17,12 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', function () { return redirect('catalog'); });
-Route::get('/catalog', 'Catalog\\CatalogController@index');
-Route::get('/admin', 'Catalog\\CatalogController@create');
+Route::get('/home', function () { return redirect('admin'); });
+Route::get('/catalog', 'Catalog\\CatalogController@home');
+Route::get('/admin', 'Catalog\\CatalogController@index')->middleware('auth');
+Route::get('/admin/create', 'Catalog\\CatalogController@create')->middleware('auth');
+Route::post('/admin/create', 'Catalog\\CatalogController@store')->middleware('auth');
+Route::get('/admin/edit/{id}', 'Catalog\\CatalogController@edit')->middleware('auth');
+Route::put('/admin/update/{id}', 'Catalog\\CatalogController@update')->middleware('auth');
+Route::delete('/admin/delete/{id}', 'Catalog\\CatalogController@destroy')->middleware('auth');
+Route::delete('/admin/delete/{id}', 'Catalog\\CatalogController@destroy')->middleware('auth');

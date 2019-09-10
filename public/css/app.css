@@ -10644,3 +10644,18 @@ a.text-dark:focus {
   }
 }
 
+body {
+  background: #ffffff;
+}
+
+body .hotel-card {
+  background: #ffffffff;
+  margin: 18px 0;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+body .star-content {
+  width: 10px;
+  display: inline-block;
+}
+
