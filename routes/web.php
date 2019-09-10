@@ -19,6 +19,7 @@ Auth::routes();
 
 Route::get('/home', function () { return redirect('admin'); });
 Route::get('/catalog', 'Catalog\\CatalogController@home');
+Route::get('/catalog/{id}', 'Catalog\\CatalogController@show');
 Route::get('/search', 'Catalog\\CatalogController@search');
 Route::get('/admin', 'Catalog\\CatalogController@index')->middleware('auth');
 Route::get('/admin/create', 'Catalog\\CatalogController@create')->middleware('auth');

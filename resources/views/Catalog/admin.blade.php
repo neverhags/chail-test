@@ -6,7 +6,7 @@
             <div class="col-md-12">
                 <a href="/admin/create" class="btn btn-primary text-white" style="margin: 15px; cursor:pointer">+ Register a Hotel</a>
 
-                <div class="hotels" v-bind="hotels">
+                <div class="hotels" v-if="searchActive" >
                     @foreach($hotels as $hotel)
                         <div class="hotel-card">
                             <div class="card-body">

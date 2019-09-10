@@ -143,14 +143,11 @@ class CatalogController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function search(Request $request) {
-        $search = $request->validate([
-            'search' => 'required|min:3|text'
-        ]);
-
+        $search = $request->get('search');
         $result = Hotels::where([
             ['name', 'LIKE', '%'.$search.'%'],
             ['description', 'LIKE', '%'.$search.'%'],
-        ])->get();
+        ])->take(10)->get();
         return $result;
     }
 }

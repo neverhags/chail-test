@@ -1,5 +1,4 @@
 @extends('layouts.app')
-
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
@@ -12,7 +11,7 @@
                     @foreach($hotels as $hotel)
                         <div class="hotel-card">
                             <div class="card-body">
-                                <div class="row">
+                                <div class="searchBox">
                                     <div class="col col-4"><img class="img-circle col-12" src="{{$hotel->imageUrl}}" alt="{{$hotel->name}}" ></div>
                                     <div class="col">
                                         <h2>{{$hotel->name}}</h2>

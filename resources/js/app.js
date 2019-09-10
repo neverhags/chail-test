@@ -29,4 +29,9 @@ Vue.component('Search', require('./components/SearchComponent.vue').default);
 
 const app = new Vue({
     el: '#app',
+    data() {
+        return {
+            hotels: []
+        }
+    }
 });

@@ -1838,6 +1838,8 @@ module.exports = {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 //
 //
 //
@@ -1850,9 +1852,40 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+
+var debug = false;
 /* harmony default export */ __webpack_exports__["default"] = ({
-  mounted: function mounted() {
-    console.log('Component mounted.');
+  data: function data() {
+    return {
+      search: '',
+      hotels: []
+    };
+  },
+  methods: {
+    searchQuery: function searchQuery(val) {
+      var _this = this;
+
+      if (this.search.length >= 3) {
+        try {
+          axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('/search', {
+            params: {
+              search: this.search
+            }
+          }).then(function (response) {
+            if (debug) console.log("Response:", response.data);
+            _this.hotels = response.data;
+          });
+        } catch (e) {
+          console.log(e);
+        }
+      }
+    }
   }
 });
 
@@ -37155,17 +37188,66 @@ var render = function() {
   return _c("div", { staticClass: "container" }, [
     _c("div", { staticClass: "row" }, [
       _c("div", { staticClass: "col col-12" }, [
-        _c("form", { attrs: { action: "/search", method: "get" } }, [
-          _c(
-            "input",
-            _vm._b(
-              { attrs: { type: "text", name: "search" } },
-              "input",
-              _vm.search,
-              false
-            )
-          )
-        ])
+        _c(
+          "form",
+          {
+            staticClass: "form-group",
+            attrs: { action: "/search", method: "get" }
+          },
+          [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.search,
+                  expression: "search"
+                }
+              ],
+              staticClass: "form-control col-4",
+              attrs: { type: "text", name: "search" },
+              domProps: { value: _vm.search },
+              on: {
+                input: [
+                  function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.search = $event.target.value
+                  },
+                  _vm.searchQuery
+                ]
+              }
+            }),
+            _vm._v(" "),
+            _vm.hotels.length && _vm.search
+              ? _c(
+                  "div",
+                  { staticClass: "col-md-4 col-xs-12 searchBoxContent" },
+                  _vm._l(_vm.hotels, function(hotel) {
+                    return _c("div", { staticClass: "col-xs-12 searchBox" }, [
+                      _c("div", { staticClass: "col col-4 d-inline-block" }, [
+                        _c("img", {
+                          staticClass: "searchImg",
+                          attrs: { src: hotel.imageUrl, alt: hotel.name }
+                        })
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        {
+                          staticClass:
+                            "col col-7 d-inline-block hotel-description font-weight-bold"
+                        },
+                        [_vm._v(_vm._s(hotel.name))]
+                      )
+                    ])
+                  }),
+                  0
+                )
+              : _vm._e()
+          ]
+        )
       ])
     ])
   ])
@@ -49346,7 +49428,12 @@ Vue.component('Search', __webpack_require__(/*! ./components/SearchComponent.vue
  */
 
 var app = new Vue({
-  el: '#app'
+  el: '#app',
+  data: function data() {
+    return {
+      hotels: []
+    };
+  }
 });
 
 /***/ }),
